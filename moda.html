@@ -13,26 +13,27 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f0f0f;
+            background: #0a0a0a;
             color: #e0e0e0;
             line-height: 1.6;
         }
 
         .navbar {
-            background: rgba(15, 15, 15, 0.95);
-            padding: 1.5rem 0;
+            background: rgba(10, 10, 10, 0.98);
+            padding: 1.2rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,46 +46,63 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             color: #e0e0e0;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: #8b5cf6;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .cart-btn {
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             position: relative;
+            font-size: 0.9rem;
         }
 
         .cart-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
         }
 
         .cart-count {
             position: absolute;
             top: -8px;
             right: -8px;
-            background: #ec4899;
+            background: #ef4444;
             color: white;
             width: 22px;
             height: 22px;
@@ -94,12 +112,13 @@
             justify-content: center;
             font-size: 0.75rem;
             font-weight: bold;
+            border: 2px solid #0a0a0a;
         }
 
         .hero {
-            margin-top: 80px;
-            height: 60vh;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            margin-top: 70px;
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,153 +130,197 @@
         .hero::before {
             content: '';
             position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            animation: float 10s ease-in-out infinite reverse;
+            bottom: -100px;
+            left: -100px;
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, -50px); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(80px, -80px) rotate(180deg); }
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
             color: white;
+            font-weight: 900;
+            letter-spacing: -2px;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #cbd5e0;
+            font-weight: 300;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 20px;
+            padding: 5rem 40px;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
             text-align: center;
             color: white;
+            font-weight: 800;
         }
 
         .section-subtitle {
             text-align: center;
             color: #a0aec0;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
         }
 
         .filters {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             color: #e0e0e0;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .filter-btn.active {
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
             border-color: transparent;
             color: white;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
         }
 
         .product-card {
-            background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 15px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 20px;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+            transform: translateY(-12px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.3);
         }
 
         .product-image {
             width: 100%;
-            height: 320px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
+            height: 380px;
+            background: #1a1a1a;
             position: relative;
             overflow: hidden;
         }
 
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
         .product-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #ec4899;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ec4899 0%, #ef4444 100%);
             color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .product-category {
             color: #8b5cf6;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
         }
 
         .product-name {
-            font-size: 1.3rem;
-            margin: 0.5rem 0;
+            font-size: 1.5rem;
+            margin: 0.8rem 0;
             color: white;
+            font-weight: 700;
+            line-height: 1.3;
         }
 
         .product-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ec4899;
-            margin: 0.5rem 0;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
         }
 
         .product-description {
             color: #a0aec0;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .add-to-cart {
@@ -265,16 +328,19 @@
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
             color: white;
             border: none;
-            padding: 0.8rem;
-            border-radius: 8px;
+            padding: 1rem;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1rem;
             transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .add-to-cart:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.5);
         }
 
         .modal {
@@ -284,11 +350,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            backdrop-filter: blur(10px);
         }
 
         .modal.active {
@@ -298,38 +365,72 @@
         .modal-content {
             background: #1a1a1a;
             border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 600px;
             width: 100%;
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(139, 92, 246, 0.2);
             border: none;
             color: #e0e0e0;
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             line-height: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(139, 92, 246, 0.4);
+            transform: rotate(90deg);
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
+            padding: 1.5rem;
             border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            transition: background 0.3s;
+        }
+
+        .cart-item:hover {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .cart-item-info h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-quantity {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-price {
+            color: #ec4899;
+            font-weight: 700;
+            font-size: 1.3rem;
         }
 
         .cart-total {
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
+            font-size: 1.8rem;
+            margin-top: 2rem;
             text-align: right;
             color: white;
+            font-weight: 800;
         }
 
         .checkout-btn {
@@ -337,39 +438,71 @@
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
             color: white;
             border: none;
-            padding: 1rem;
-            border-radius: 10px;
+            padding: 1.2rem;
+            border-radius: 15px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.5);
         }
 
         .powered-by {
             text-align: center;
-            padding: 3rem 0;
-            background: rgba(10, 10, 10, 0.8);
+            padding: 4rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(139, 92, 246, 0.15);
         }
 
         .powered-by p {
             color: #718096;
             margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         .powered-by a {
             color: #8b5cf6;
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
         }
 
         .powered-by a:hover {
             color: #ec4899;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #718096;
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .nav-links {
@@ -377,8 +510,20 @@
             }
 
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 1rem;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 3rem 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
             }
         }
     </style>
@@ -390,7 +535,7 @@
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
-                <li><a href="#sobre">Sobre Nosotros</a></li>
+                <li><a href="#sobre">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <button class="cart-btn" onclick="toggleCart()">
@@ -402,13 +547,13 @@
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <h1>Estilo Urbano</h1>
-            <p>La moda que define tu personalidad</p>
+            <h1>UrbanStyle</h1>
+            <p>Moda urbana que define tu personalidad</p>
         </div>
     </section>
 
     <div class="container" id="productos">
-        <h2 class="section-title">Nuestra Colección</h2>
+        <h2 class="section-title">Colección Exclusiva</h2>
         <p class="section-subtitle">Descubre las últimas tendencias en moda urbana</p>
 
         <div class="filters">
@@ -424,7 +569,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <button class="modal-close" onclick="toggleCart()">×</button>
-            <h2 style="color: white; margin-bottom: 1.5rem;">Tu Carrito</h2>
+            <h2 style="color: white; margin-bottom: 2rem; font-size: 2rem;">Tu Carrito</h2>
             <div id="cartItems"></div>
             <div class="cart-total">Total: <span id="cartTotal">$0</span></div>
             <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
@@ -432,20 +577,21 @@
     </div>
 
     <div class="powered-by">
-        <p>Este sitio fue desarrollado por</p>
-        <a href="#" onclick="alert('Volver al portafolio de Luminen Studio')">Luminen Studio</a>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Software intuitivo para emprendedores</p>
+        <p>Sitio desarrollado por</p>
+        <a href="index.html">Luminen Studio</a>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #4a5568;">Software intuitivo para emprendedores</p>
     </div>
 
     <script>
+        // PRODUCTOS CON IMÁGENES DE UNSPLASH (alta calidad)
         const products = [
             {
                 id: 1,
                 name: 'Camiseta Urban Basic',
                 category: 'hombre',
                 price: 29.99,
-                description: 'Camiseta de algodón 100% premium',
-                icon: '👕',
+                description: 'Camiseta de algodón 100% premium con diseño minimalista',
+                image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=600&fit=crop',
                 badge: 'Nuevo'
             },
             {
@@ -453,26 +599,26 @@
                 name: 'Jeans Slim Fit',
                 category: 'hombre',
                 price: 59.99,
-                description: 'Denim de alta calidad con corte moderno',
-                icon: '👖',
+                description: 'Denim de alta calidad con corte moderno y cómodo',
+                image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=600&fit=crop',
                 badge: 'Popular'
             },
             {
                 id: 3,
-                name: 'Vestido Casual',
+                name: 'Vestido Casual Elegante',
                 category: 'mujer',
                 price: 45.99,
-                description: 'Perfecto para cualquier ocasión',
-                icon: '👗',
+                description: 'Perfecto para cualquier ocasión, diseño versátil',
+                image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop',
                 badge: 'Nuevo'
             },
             {
                 id: 4,
-                name: 'Chaqueta Denim',
+                name: 'Chaqueta Denim Classic',
                 category: 'hombre',
                 price: 79.99,
-                description: 'Estilo clásico que nunca pasa de moda',
-                icon: '🧥',
+                description: 'Estilo clásico que nunca pasa de moda, resistente',
+                image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=600&fit=crop',
                 badge: null
             },
             {
@@ -480,35 +626,71 @@
                 name: 'Blusa Elegante',
                 category: 'mujer',
                 price: 34.99,
-                description: 'Diseño sofisticado y cómodo',
-                icon: '👚',
+                description: 'Diseño sofisticado y cómodo para el día a día',
+                image: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=500&h=600&fit=crop',
                 badge: 'Oferta'
             },
             {
                 id: 6,
-                name: 'Zapatillas Deportivas',
+                name: 'Zapatillas Deportivas Pro',
                 category: 'accesorios',
                 price: 89.99,
-                description: 'Máximo confort y estilo',
-                icon: '👟',
+                description: 'Máximo confort y estilo para tu día activo',
+                image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=600&fit=crop',
                 badge: 'Popular'
             },
             {
                 id: 7,
-                name: 'Gorra Urban',
+                name: 'Gorra Urban Street',
                 category: 'accesorios',
                 price: 19.99,
-                description: 'Completa tu look urbano',
-                icon: '🧢',
+                description: 'Completa tu look urbano con estilo único',
+                image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=600&fit=crop',
                 badge: null
             },
             {
                 id: 8,
-                name: 'Bolso Tote',
+                name: 'Bolso Tote Premium',
                 category: 'accesorios',
                 price: 39.99,
-                description: 'Espacioso y con estilo',
-                icon: '👜',
+                description: 'Espacioso y con estilo, perfecto para el día a día',
+                image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&h=600&fit=crop',
+                badge: 'Nuevo'
+            },
+            {
+                id: 9,
+                name: 'Sudadera Oversized',
+                category: 'hombre',
+                price: 49.99,
+                description: 'Comodidad máxima con diseño urbano actual',
+                image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=600&fit=crop',
+                badge: 'Popular'
+            },
+            {
+                id: 10,
+                name: 'Falda Midi Elegante',
+                category: 'mujer',
+                price: 38.99,
+                description: 'Diseño femenino y versátil para cualquier estilo',
+                image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&h=600&fit=crop',
+                badge: null
+            },
+            {
+                id: 11,
+                name: 'Camisa Formal Slim',
+                category: 'hombre',
+                price: 44.99,
+                description: 'Elegancia y estilo para ocasiones especiales',
+                image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=600&fit=crop',
+                badge: null
+            },
+            {
+                id: 12,
+                name: 'Mochila Urban Explorer',
+                category: 'accesorios',
+                price: 54.99,
+                description: 'Funcional y moderna, perfecta para tu estilo de vida',
+                image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=600&fit=crop',
                 badge: 'Nuevo'
             }
         ];
@@ -524,9 +706,9 @@
 
             grid.innerHTML = filtered.map(product => `
                 <div class="product-card">
-                    <div class="product-image" style="background: linear-gradient(135deg, ${getGradient(product.category)})">
+                    <div class="product-image">
                         ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-                        <span style="font-size: 5rem;">${product.icon}</span>
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                     </div>
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
@@ -539,15 +721,6 @@
                     </div>
                 </div>
             `).join('');
-        }
-
-        function getGradient(category) {
-            const gradients = {
-                hombre: '#667eea 0%, #764ba2 100%',
-                mujer: '#f093fb 0%, #f5576c 100%',
-                accesorios: '#4facfe 0%, #00f2fe 100%'
-            };
-            return gradients[category] || '#667eea 0%, #764ba2 100%';
         }
 
         function filterProducts(category) {
@@ -572,10 +745,13 @@
             updateCart();
             
             const btn = event.target;
+            const originalText = btn.textContent;
             btn.textContent = '✓ Agregado';
+            btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
             setTimeout(() => {
-                btn.textContent = 'Agregar al Carrito';
-            }, 1000);
+                btn.textContent = originalText;
+                btn.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)';
+            }, 1500);
         }
 
         function updateCart() {
@@ -584,15 +760,21 @@
 
             const cartItems = document.getElementById('cartItems');
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: #718096; padding: 2rem;">Tu carrito está vacío</p>';
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <p style="font-size: 1.1rem;">Tu carrito está vacío</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Agrega productos para comenzar</p>
+                    </div>
+                `;
             } else {
                 cartItems.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <div>
-                            <div style="color: white; font-weight: 600;">${item.name}</div>
-                            <div style="color: #718096; font-size: 0.9rem;">Cantidad: ${item.quantity}</div>
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-quantity">Cantidad: ${item.quantity}</div>
                         </div>
-                        <div style="color: #ec4899; font-weight: 700;">$${(item.price * item.quantity).toFixed(2)}</div>
+                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                     </div>
                 `).join('');
             }
@@ -610,12 +792,20 @@
                 alert('Tu carrito está vacío');
                 return;
             }
-            alert('¡Gracias por tu compra! En un sitio real, aquí se procesaría el pago.\n\nEste es un demo creado por Luminen Studio.');
+            alert('¡Gracias por tu compra!\n\nEste es un demo creado por Luminen Studio.\nEn un sitio real, aquí se procesaría el pago de forma segura.');
             cart = [];
             updateCart();
             toggleCart();
         }
 
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCart();
+            }
+        });
+
+        // Inicializar
         renderProducts();
         updateCart();
     </script>
