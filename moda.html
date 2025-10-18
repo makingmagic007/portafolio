@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanStyle - Tienda de Ropa Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(15, 15, 15, 0.95);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #8b5cf6;
+        }
+
+        .cart-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ec4899;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .hero {
+            margin-top: 80px;
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #cbd5e0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #a0aec0;
+            margin-bottom: 3rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #e0e0e0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            border-color: transparent;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ec4899;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: #8b5cf6;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ec4899;
+            margin: 0.5rem 0;
+        }
+
+        .product-description {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .cart-total {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: right;
+            color: white;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .powered-by {
+            text-align: center;
+            padding: 3rem 0;
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .powered-by p {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .powered-by a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .powered-by a:hover {
+            color: #ec4899;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">UrbanStyle</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sobre">Sobre Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="cart-btn" onclick="toggleCart()">
+                🛒 Carrito
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Estilo Urbano</h1>
+            <p>La moda que define tu personalidad</p>
+        </div>
+    </section>
+
+    <div class="container" id="productos">
+        <h2 class="section-title">Nuestra Colección</h2>
+        <p class="section-subtitle">Descubre las últimas tendencias en moda urbana</p>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProducts('all')">Todo</button>
+            <button class="filter-btn" onclick="filterProducts('hombre')">Hombre</button>
+            <button class="filter-btn" onclick="filterProducts('mujer')">Mujer</button>
+            <button class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleCart()">×</button>
+            <h2 style="color: white; margin-bottom: 1.5rem;">Tu Carrito</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">Total: <span id="cartTotal">$0</span></div>
+            <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <div class="powered-by">
+        <p>Este sitio fue desarrollado por</p>
+        <a href="#" onclick="alert('Volver al portafolio de Luminen Studio')">Luminen Studio</a>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Software intuitivo para emprendedores</p>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: 'Camiseta Urban Basic',
+                category: 'hombre',
+                price: 29.99,
+                description: 'Camiseta de algodón 100% premium',
+                icon: '👕',
+                badge: 'Nuevo'
+            },
+            {
+                id: 2,
+                name: 'Jeans Slim Fit',
+                category: 'hombre',
+                price: 59.99,
+                description: 'Denim de alta calidad con corte moderno',
+                icon: '👖',
+                badge: 'Popular'
+            },
+            {
+                id: 3,
+                name: 'Vestido Casual',
+                category: 'mujer',
+                price: 45.99,
+                description: 'Perfecto para cualquier ocasión',
+                icon: '👗',
+                badge: 'Nuevo'
+            },
+            {
+                id: 4,
+                name: 'Chaqueta Denim',
+                category: 'hombre',
+                price: 79.99,
+                description: 'Estilo clásico que nunca pasa de moda',
+                icon: '🧥',
+                badge: null
+            },
+            {
+                id: 5,
+                name: 'Blusa Elegante',
+                category: 'mujer',
+                price: 34.99,
+                description: 'Diseño sofisticado y cómodo',
+                icon: '👚',
+                badge: 'Oferta'
+            },
+            {
+                id: 6,
+                name: 'Zapatillas Deportivas',
+                category: 'accesorios',
+                price: 89.99,
+                description: 'Máximo confort y estilo',
+                icon: '👟',
+                badge: 'Popular'
+            },
+            {
+                id: 7,
+                name: 'Gorra Urban',
+                category: 'accesorios',
+                price: 19.99,
+                description: 'Completa tu look urbano',
+                icon: '🧢',
+                badge: null
+            },
+            {
+                id: 8,
+                name: 'Bolso Tote',
+                category: 'accesorios',
+                price: 39.99,
+                description: 'Espacioso y con estilo',
+                icon: '👜',
+                badge: 'Nuevo'
+            }
+        ];
+
+        let cart = [];
+        let currentFilter = 'all';
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const filtered = currentFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+
+            grid.innerHTML = filtered.map(product => `
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, ${getGradient(product.category)})">
+                        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                        <span style="font-size: 5rem;">${product.icon}</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getGradient(category) {
+            const gradients = {
+                hombre: '#667eea 0%, #764ba2 100%',
+                mujer: '#f093fb 0%, #f5576c 100%',
+                accesorios: '#4facfe 0%, #00f2fe 100%'
+            };
+            return gradients[category] || '#667eea 0%, #764ba2 100%';
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderProducts();
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCart();
+            
+            const btn = event.target;
+            btn.textContent = '✓ Agregado';
+            setTimeout(() => {
+                btn.textContent = 'Agregar al Carrito';
+            }, 1000);
+        }
+
+        function updateCart() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+
+            const cartItems = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #718096; padding: 2rem;">Tu carrito está vacío</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div>
+                            <div style="color: white; font-weight: 600;">${item.name}</div>
+                            <div style="color: #718096; font-size: 0.9rem;">Cantidad: ${item.quantity}</div>
+                        </div>
+                        <div style="color: #ec4899; font-weight: 700;">$${(item.price * item.quantity).toFixed(2)}</div>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('active');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            alert('¡Gracias por tu compra! En un sitio real, aquí se procesaría el pago.\n\nEste es un demo creado por Luminen Studio.');
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        renderProducts();
+        updateCart();
+    </script>
+</body>
+</html>

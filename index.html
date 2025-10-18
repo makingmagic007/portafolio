@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminen Studio | Software para Emprendedores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: pulse 5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .value-proposition {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .value-proposition p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e0;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .team-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .team-card p {
+            color: #a0aec0;
+        }
+
+        .services {
+            background: linear-gradient(180deg, #0a0e27 0%, #151937 50%, #0a0e27 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-item h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #050814;
+            color: #718096;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Luminen Studio</h1>
+                <p class="subtitle">Iluminamos tu camino digital | Software para Emprendedores</p>
+                
+                <div class="value-proposition">
+                    <p>Impulsamos a los emprendedores creando software intuitivo, seguro y atractivo que les permite vender online sin complicaciones técnicas. Nuestro objetivo es hacer que la tecnología sea sencilla y el crecimiento accesible para todos los negocios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestro Equipo</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-icon">JR</div>
+                    <h3>Juan Ruiz</h3>
+                    <p>Backend Developer</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">JG</div>
+                    <h3>Jesús García</h3>
+                    <p>Frontend Developer</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">KP</div>
+                    <h3>Keiner Peñaranda</h3>
+                    <p>Marketing Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section services">
+        <div class="container">
+            <h2 class="section-title">¿Qué Hacemos?</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="service-icon">🚀</span>
+                    <h3>E-commerce Personalizado</h3>
+                    <p>Tiendas online diseñadas para maximizar tus ventas desde el primer día.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">💎</span>
+                    <h3>Diseño Intuitivo</h3>
+                    <p>Interfaces elegantes y fáciles de usar para ti y tus clientes.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🔒</span>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Protegemos tu negocio y los datos de tus clientes.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">📱</span>
+                    <h3>Responsive Design</h3>
+                    <p>Tu tienda se verá perfecta en cualquier dispositivo.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">⚡</span>
+                    <h3>Rápido y Eficiente</h3>
+                    <p>Carga rápida para no perder ni una sola venta.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🎯</span>
+                    <h3>Soporte Continuo</h3>
+                    <p>Estamos contigo en cada paso de tu crecimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Proyectos</h2>
+            <p style="text-align: center; color: #a0aec0; margin-bottom: 3rem; font-size: 1.1rem;">Ejemplos de nuestro trabajo</p>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(139, 92, 246, 0.6)'; this.style.boxShadow='0 20px 40px rgba(139, 92, 246, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(139, 92, 246, 0.3)'; this.style.boxShadow='none'">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">👕</div>
+                    <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 0.5rem;">UrbanStyle</h3>
+                    <p style="color: #a0aec0; margin-bottom: 1.5rem;">Tienda de ropa online con carrito de compras dinámico</p>
+                    <a href="moda.html" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); color: white; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(139, 92, 246, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Ver Demo en Vivo 🚀</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">¿Listo para Crecer?</h2>
+            <p style="font-size: 1.2rem; color: #a0aec0; margin-bottom: 2rem;">Contáctanos y llevemos tu negocio al siguiente nivel</p>
+            <a href="mailto:preciogeminis@gmail.com" class="contact-btn">Envíanos un Mensaje</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Luminen Studio | Juan Ruiz, Jesús García, Keiner Peñaranda</p>
+            <p>preciogeminis@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
