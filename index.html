@@ -3,20 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminen Studio | Software a la Medida para Emprendedores que Escalan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Luminen Studio | Software para Emprendedores</title>
     <style>
-        /* Variables y Reset */
-        :root {
-            --color-primary: #8b5cf6; /* Morado/Violeta */
-            --color-secondary: #ec4899; /* Rosa */
-            --color-bg-dark: #0a0e27;
-            --color-bg-light: #151937;
-            --color-text-main: #e0e0e0;
-            --color-text-sub: #a0aec0;
-            --font-main: 'Inter', sans-serif;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -24,151 +12,140 @@
         }
 
         body {
-            font-family: var(--font-main);
-            background: var(--color-bg-dark);
-            color: var(--color-text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #1f2937;
             line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Utilidades */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-bg-light) 50%, var(--color-bg-dark) 100%);
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f3f4f6 100%);
             position: relative;
             overflow: hidden;
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .hero::before, .hero::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(80px); /* Aumento el blur para un efecto más sutil y profesional */
         }
 
         .hero::before {
-            width: 450px;
-            height: 450px;
-            background: rgba(139, 92, 246, 0.15);
-            top: -150px;
-            right: -150px;
-            animation: pulse-pro 6s ease-in-out infinite alternate;
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: pulse 4s ease-in-out infinite;
         }
 
         .hero::after {
-            width: 350px;
-            height: 350px;
-            background: rgba(236, 72, 153, 0.15);
-            bottom: -100px;
-            left: -100px;
-            animation: pulse-pro 7s ease-in-out infinite alternate-reverse;
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(31, 41, 55, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: pulse 5s ease-in-out infinite;
         }
 
-        @keyframes pulse-pro {
-            0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
-            100% { transform: scale(1.1) translate(20px, 20px); opacity: 0.8; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
         }
 
-        .hero__title {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            letter-spacing: -2px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
             animation: fadeInUp 1s ease-out;
-            line-height: 1.1;
         }
 
-        .hero__subtitle {
-            font-size: 1.5rem;
-            color: var(--color-text-sub);
-            margin-bottom: 3rem;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
             font-weight: 300;
-            animation: fadeInUp 1.2s ease-out;
         }
 
         .value-proposition {
-            background: rgba(var(--color-primary), 0.05); /* Usando el color primary como base */
-            border: 1px solid rgba(var(--color-primary), 0.2);
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 900px;
-            margin: 0 auto 3rem;
+            background: rgba(245, 158, 11, 0.05);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
             backdrop-filter: blur(10px);
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1.4s ease-out;
-        }
-        
-        .value-proposition p {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: var(--color-text-main);
-            font-weight: 500;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* --- SECCIONES GENERALES --- */
+        .value-proposition p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
         .section {
-            padding: 100px 0;
-            position: relative;
+            padding: 5rem 0;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 50px;
-            font-weight: 800;
-        }
-        
-        .section--light-bg {
-             background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-light) 50%, var(--color-bg-dark) 100%);
+            margin-bottom: 3rem;
+            color: #111827;
         }
 
-        /* --- EQUIPO (TEAM) --- */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
         .team-card {
-            background: var(--color-bg-light);
-            border: 1px solid rgba(var(--color-primary), 0.3);
-            border-radius: 15px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
             padding: 2rem;
             text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(var(--color-primary), 0.3);
-            border-color: var(--color-primary);
+            overflow: visible;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .team-card::before {
@@ -177,361 +154,436 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
             transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: #f59e0b;
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
         }
 
         .team-card:hover::before {
             transform: scaleX(1);
         }
 
+        .team-info-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid #f59e0b;
+        }
+
+        .team-info-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 10px solid transparent;
+            border-top-color: #111827;
+        }
+
+        .team-personal-tooltip {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3);
+        }
+
+        .team-personal-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 10px solid transparent;
+            border-bottom-color: #f59e0b;
+        }
+
+        .team-card:hover .team-info-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        .team-card:hover .team-personal-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(20px);
+        }
+
+        .tooltip-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .tooltip-item {
+            margin: 0.6rem 0;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+
+        .tooltip-item::before {
+            content: '▸';
+            margin-right: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         .team-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: bold;
             color: white;
-            box-shadow: 0 5px 20px rgba(var(--color-primary), 0.5);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
 
         .team-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            color: #111827;
         }
 
         .team-card p {
-            color: var(--color-text-sub);
-            font-size: 1rem;
+            color: #6b7280;
         }
-        
-        /* --- SERVICIOS (SERVICES) --- */
+
+        .services {
+            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 50%, #f9fafb 100%);
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
         .service-item {
-            background: rgba(var(--color-primary), 0.05);
-            border: 1px solid rgba(var(--color-primary), 0.2);
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
             border-radius: 15px;
-            padding: 2.5rem;
+            padding: 2rem;
             transition: all 0.3s ease;
-            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .service-item:hover {
-            background: rgba(var(--color-primary), 0.1);
-            border-color: rgba(var(--color-primary), 0.4);
+            background: #fffbeb;
+            border-color: #f59e0b;
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
         }
 
         .service-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-item:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
+            display: block;
         }
 
         .service-item h3 {
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .service-item p {
-            color: var(--color-text-sub);
-            font-size: 1rem;
-        }
-        
-        /* --- PROYECTOS (PORTFOLIO) --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .project-card {
-            background: var(--color-bg-light);
-            border: 1px solid rgba(var(--color-secondary), 0.2);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(var(--color-secondary), 0.3);
-            border-color: var(--color-secondary);
-        }
-
-        .project-card__content {
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        .project-card__icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
+            color: #111827;
             margin-bottom: 0.5rem;
         }
 
-        .project-card p {
-            color: var(--color-text-sub);
-            margin-bottom: 1.5rem;
+        .service-item p {
+            color: #6b7280;
+            font-size: 0.95rem;
         }
 
-        .project-card a {
-            font-size: 0.9rem;
-        }
-
-        /* --- CONTACTO (CALL TO ACTION) --- */
         .contact {
             text-align: center;
-            padding: 100px 0;
-        }
-        
-        .contact__subtitle {
-            font-size: 1.5rem;
-            color: var(--color-text-sub);
-            margin-bottom: 3rem;
+            padding: 5rem 0;
         }
 
-        .btn {
+        .contact-btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
             padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(var(--color-primary), 0.3);
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(var(--color-primary), 0.5);
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
         }
 
-        /* --- FOOTER --- */
-        .footer {
+        footer {
             text-align: center;
-            padding: 40px 0;
-            background: #050814;
-            color: #718096;
-            border-top: 1px solid #1a1f3a;
-            font-size: 0.9rem;
-        }
-        
-        .footer p {
-            margin-bottom: 0.5rem;
+            padding: 2rem;
+            background: #111827;
+            color: #9ca3af;
         }
 
-        /* --- MEDIA QUERIES --- */
-        @media (max-width: 900px) {
-            .hero__title {
-                font-size: 3.5rem;
-            }
-
-            .hero__subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .value-proposition {
-                padding: 2rem;
-            }
-            
-            .value-proposition p {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero__title {
+        @media (max-width: 768px) {
+            h1 {
                 font-size: 2.5rem;
             }
-            
-            .section-title {
-                font-size: 2rem;
+
+            .subtitle {
+                font-size: 1.1rem;
             }
-        }
-        
-        /* Keyframes from original code */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Adaptación para móviles: Mostrar tooltips en click */
+            .team-card {
+                cursor: pointer;
+            }
+
+            .team-info-tooltip,
+            .team-personal-tooltip {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                margin-top: 1rem;
+                width: 100%;
+                display: none;
+            }
+
+            .team-info-tooltip::after,
+            .team-personal-tooltip::after {
+                display: none;
+            }
+
+            .team-card.active .team-info-tooltip,
+            .team-card.active .team-personal-tooltip {
+                display: block;
+            }
+
+            .team-card::after {
+                content: '👆 Toca para ver más info';
+                display: block;
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                color: #f59e0b;
+                font-weight: 600;
+            }
+
+            .team-card.active::after {
+                content: '👆 Toca para ocultar';
+            }
         }
     </style>
 </head>
 <body>
-    
-    <main>
-        <section class="hero" id="inicio">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero__title">
-                        <span class="gradient-text">Luminen Studio</span>
-                    </h1>
-                    <p class="hero__subtitle">
-                        Software a la medida | **Iluminamos tu camino digital** para escalar tu negocio.
-                    </p>
-                    
-                    <div class="value-proposition">
-                        <p>
-                            Dejamos atrás las complicaciones técnicas. **Creamos plataformas de e-commerce y sistemas de gestión intuitivos, seguros y con diseño de vanguardia** que permiten a los emprendedores enfocarse únicamente en **vender y crecer**. La tecnología que potencia tu visión, sin frustraciones.
-                        </p>
-                    </div>
-                    
-                    <a href="#contacto" class="btn" style="animation: fadeInUp 1.6s ease-out;">
-                        Comienza tu Proyecto Hoy
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--light-bg" id="servicios">
-            <div class="container">
-                <h2 class="section-title gradient-text">Nuestros Pilares de Crecimiento</h2>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <span class="service-icon">💡</span>
-                        <h3>Desarrollo E-commerce 360°</h3>
-                        <p>Tiendas en línea de alto rendimiento, optimizadas para conversión y completamente personalizadas a tu marca. Incluye gestión de inventario y pasarelas de pago.</p>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">✨</span>
-                        <h3>UX/UI de Clase Mundial</h3>
-                        <p>Diseño de interfaces que no solo son bellas, sino que resuelven problemas. Experiencias de usuario fluidas que fidelizan clientes y reducen el abandono del carrito.</p>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">🛡️</span>
-                        <h3>Infraestructura y Seguridad</h3>
-                        <p>Alojamiento robusto, velocidad de carga insuperable y las mejores prácticas de ciberseguridad para proteger tu inversión y los datos de tus clientes.</p>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">⚙️</span>
-                        <h3>Integración y Automatización</h3>
-                        <p>Conectamos tu nuevo software con sistemas existentes (CRM, ERP, Marketing) para automatizar procesos y ahorrar tiempo valioso a tu equipo.</p>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">📈</span>
-                        <h3>Escalabilidad Asegurada</h3>
-                        <p>Construimos sobre arquitecturas modernas (como *headless commerce*) para que tu plataforma crezca contigo, sin necesidad de re-inversiones costosas.</p>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">🛠️</span>
-                        <h3>Soporte y Evolución</h3>
-                        <p>No te dejamos solo. Ofrecemos mantenimiento continuo, actualizaciones y asesoría estratégica para que siempre estés un paso adelante en el mercado.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="portafolio">
-            <div class="container">
-                <h2 class="section-title">Portafolio Destacado</h2>
-                <p style="text-align: center; color: var(--color-text-sub); margin-bottom: 4rem; font-size: 1.2rem;">Soluciones que impulsan resultados tangibles.</p>
-                
-                <div class="portfolio-grid">
-                    <div class="project-card">
-                        <div class="project-card__content">
-                            <div class="project-card__icon">🛍️</div>
-                            <h3>UrbanStyle Commerce</h3>
-                            <p>Plataforma de moda de alta conversión con gestión de inventario en tiempo real. **+40% de aumento en tasa de conversión.**</p>
-                            <a href="moda.html" target="_blank" class="btn" style="padding: 0.8rem 2rem; font-size: 0.9rem;">Ver Caso de Éxito &rarr;</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-card__content">
-                            <div class="project-card__icon">📊</div>
-                            <h3>Nexus CRM Lite</h3>
-                            <p>Sistema de gestión de clientes *lightweight* para startups, enfocado en automatización de seguimiento. **Reducción de tareas manuales en 60%.**</p>
-                            <a href="crm.html" target="_blank" class="btn" style="padding: 0.8rem 2rem; font-size: 0.9rem; background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%); box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);">Ver Demo (Mockup) &rarr;</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-card__content">
-                            <div class="project-card__icon">🌐</div>
-                            <h3>LandingPage Builder (SaaS)</h3>
-                            <p>Herramienta para crear *landing pages* optimizadas para SEO y captación de leads. **Tiempo de carga promedio: 1.2s.**</p>
-                            <a href="saas.html" target="_blank" class="btn" style="padding: 0.8rem 2rem; font-size: 0.9rem; background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">Ver Demo en Vivo &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="section section--light-bg" id="equipo">
-            <div class="container">
-                <h2 class="section-title gradient-text">Nuestro Equipo | La Luz Detrás del Código</h2>
-                <p style="text-align: center; color: var(--color-text-sub); margin-bottom: 4rem; font-size: 1.2rem;">Una combinación estratégica de talento técnico, diseño y visión de negocio.</p>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-icon">JR</div>
-                        <h3>Juan Ruiz</h3>
-                        <p>Backend Architect & Security Lead</p>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">Experto en sistemas escalables y seguridad de datos.</p>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-icon">JG</div>
-                        <h3>Jesús García</h3>
-                        <p>Lead Frontend & UX Specialist</p>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">Maestro en interfaces intuitivas que impulsan la interacción.</p>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-icon">KP</div>
-                        <h3>Keiner Peñaranda</h3>
-                        <p>Growth & Marketing Strategist</p>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">El nexo entre nuestro software y tu estrategia de negocio.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact" id="contacto">
-            <div class="container">
-                <h2 class="section-title">¿Listo para Encender tu Negocio?</h2>
-                <p class="contact__subtitle">Agenda una llamada sin compromiso para que analicemos tu visión y el software que la hará realidad.</p>
-                <a href="mailto:preciogeminis@gmail.com" class="btn">
-                    Agenda tu Sesión Estratégica
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
+    <section class="hero">
         <div class="container">
-            <p>&copy; 2024 Luminen Studio | Todos los derechos reservados.</p>
-            <p>Contacto: <a href="mailto:preciogeminis@gmail.com" style="color: var(--color-primary); text-decoration: none;">preciogeminis@gmail.com</a></p>
+            <div class="hero-content">
+                <h1>Luminen Studio</h1>
+                <p class="subtitle">Iluminamos tu camino digital | Software para Emprendedores</p>
+                
+                <div class="value-proposition">
+                    <p>Impulsamos a los emprendedores creando software intuitivo, seguro y atractivo que les permite vender online sin complicaciones técnicas. Nuestro objetivo es hacer que la tecnología sea sencilla y el crecimiento accesible para todos los negocios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestro Equipo</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-info-tooltip">
+                        <div class="tooltip-title">Especialidades</div>
+                        <div class="tooltip-item">APIs y arquitectura de sistemas</div>
+                        <div class="tooltip-item">Bases de datos y optimización</div>
+                        <div class="tooltip-item">Seguridad y escalabilidad</div>
+                        <div class="tooltip-item">Integración de pagos</div>
+                    </div>
+                    <div class="team-personal-tooltip">
+                        <div class="tooltip-title">Información Personal</div>
+                        <div class="tooltip-item">📧 juan.ruiz@luminen.com</div>
+                        <div class="tooltip-item">🎓 Ingeniero de Software</div>
+                        <div class="tooltip-item">📍 Riohacha, Colombia</div>
+                        <div class="tooltip-item">💼 5+ años de experiencia</div>
+                    </div>
+                    <div class="team-icon">JR</div>
+                    <h3>Juan Ruiz</h3>
+                    <p>Backend Developer</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-info-tooltip">
+                        <div class="tooltip-title">Especialidades</div>
+                        <div class="tooltip-item">React y JavaScript moderno</div>
+                        <div class="tooltip-item">UI/UX y diseño responsivo</div>
+                        <div class="tooltip-item">Animaciones y efectos visuales</div>
+                        <div class="tooltip-item">Optimización de rendimiento</div>
+                    </div>
+                    <div class="team-personal-tooltip">
+                        <div class="tooltip-title">Información Personal</div>
+                        <div class="tooltip-item">📧 jesus.garcia@luminen.com</div>
+                        <div class="tooltip-item">🎓 Diseñador y Desarrollador</div>
+                        <div class="tooltip-item">📍 Riohacha, Colombia</div>
+                        <div class="tooltip-item">💼 4+ años de experiencia</div>
+                    </div>
+                    <div class="team-icon">JG</div>
+                    <h3>Jesús García</h3>
+                    <p>Frontend Developer</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-info-tooltip">
+                        <div class="tooltip-title">Especialidades</div>
+                        <div class="tooltip-item">Estrategias de conversión</div>
+                        <div class="tooltip-item">SEO y análisis de mercado</div>
+                        <div class="tooltip-item">Experiencia de usuario (UX)</div>
+                        <div class="tooltip-item">Marketing digital y redes</div>
+                    </div>
+                    <div class="team-personal-tooltip">
+                        <div class="tooltip-title">Información Personal</div>
+                        <div class="tooltip-item">📧 keiner.penaranda@luminen.com</div>
+                        <div class="tooltip-item">🎓 Especialista en Marketing</div>
+                        <div class="tooltip-item">📍 Riohacha, Colombia</div>
+                        <div class="tooltip-item">💼 3+ años de experiencia</div>
+                    </div>
+                    <div class="team-icon">KP</div>
+                    <h3>Keiner Peñaranda</h3>
+                    <p>Marketing Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section services">
+        <div class="container">
+            <h2 class="section-title">¿Qué Hacemos?</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="service-icon">🚀</span>
+                    <h3>E-commerce Personalizado</h3>
+                    <p>Tiendas online diseñadas para maximizar tus ventas desde el primer día.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">💎</span>
+                    <h3>Diseño Intuitivo</h3>
+                    <p>Interfaces elegantes y fáciles de usar para ti y tus clientes.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🔒</span>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Protegemos tu negocio y los datos de tus clientes.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">📱</span>
+                    <h3>Responsive Design</h3>
+                    <p>Tu tienda se verá perfecta en cualquier dispositivo.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">⚡</span>
+                    <h3>Rápido y Eficiente</h3>
+                    <p>Carga rápida para no perder ni una sola venta.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🎯</span>
+                    <h3>Soporte Continuo</h3>
+                    <p>Estamos contigo en cada paso de tu crecimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Proyectos</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; font-size: 1.1rem;">Ejemplos de nuestro trabajo</p>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div style="background: #ffffff; border: 2px solid #e5e7eb; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='#f59e0b'; this.style.boxShadow='0 20px 40px rgba(245, 158, 11, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.05)'">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">👕</div>
+                    <h3 style="color: #111827; font-size: 1.8rem; margin-bottom: 0.5rem;">UrbanStyle</h3>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Tienda de ropa online con carrito de compras dinámico</p>
+                    <a href="moda.html" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(245, 158, 11, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Ver Demo en Vivo 🚀</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">¿Listo para Crecer?</h2>
+            <p style="font-size: 1.2rem; color: #6b7280; margin-bottom: 2rem;">Contáctanos y llevemos tu negocio al siguiente nivel</p>
+            <a href="mailto:preciogeminis@gmail.com" class="contact-btn">Envíanos un Mensaje</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Luminen Studio | Juan Ruiz, Jesús García, Keiner Peñaranda</p>
+            <p>preciogeminis@gmail.com</p>
         </div>
     </footer>
-    
+
+    <script>
+        // Funcionalidad para móviles: toggle de información al hacer click
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamCards = document.querySelectorAll('.team-card');
+            
+            teamCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Solo en móviles (menos de 768px)
+                    if (window.innerWidth <= 768) {
+                        // Remover 'active' de otras tarjetas
+                        teamCards.forEach(c => {
+                            if (c !== card) {
+                                c.classList.remove('active');
+                            }
+                        });
+                        // Toggle en la tarjeta actual
+                        card.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 
